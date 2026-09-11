@@ -1,0 +1,14 @@
+{
+  "name": "barkat-pharmacy",
+  "version": "1.0.0",
+  "description": "Barkat Pharmacy — Online medicine ordering website (Lakecity Meadows, Lahore)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.0.3",
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,8 @@
+# Dependencies (Netlify installs these itself at build time)
+node_modules/
+
+# Local dev data (orders are stored in Netlify Blobs on the deployed site)
+data/
+
+# Netlify CLI local state
+.netlify/

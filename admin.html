@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Barkat Pharmacy</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:#f0f4f0;color:#1a2e1a;min-height:100vh}
+    .admin-login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:1rem}
+    .login-card{background:#fff;border-radius:16px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 4px 24px rgba(0,0,0,0.08);text-align:center}
+    .login-card h1{font-size:1.5rem;margin-bottom:0.25rem;color:#16a34a}
+    .login-card p{color:#6b7280;margin-bottom:1.5rem;font-size:0.9rem}
+    .login-card input{width:100%;padding:0.75rem 1rem;border:2px solid #e5e7eb;border-radius:10px;font-size:1rem;margin-bottom:1rem;transition:border 0.2s}
+    .login-card input:focus{outline:none;border-color:#16a34a}
+    .login-card button{width:100%;padding:0.75rem;background:#16a34a;color:#fff;border:none;border-radius:10px;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s}
+    .login-card button:hover{background:#15803d}
+    .login-error{color:#dc2626;font-size:0.85rem;margin-bottom:1rem;display:none}
+
+    .admin-panel{max-width:1100px;margin:0 auto;padding:1.5rem}
+    .admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:0.5rem}
+    .admin-header h1{font-size:1.4rem;color:#16a34a}
+    .admin-header .stats{display:flex;gap:1rem}
+    .stat-box{background:#fff;border-radius:10px;padding:0.6rem 1.2rem;box-shadow:0 1px 4px rgba(0,0,0,0.06);font-size:0.85rem}
+    .stat-box strong{color:#16a34a;font-size:1.1rem;display:block}
+    .admin-header .back-link{color:#6b7280;text-decoration:none;font-size:0.85rem}
+
+    .orders-table-wrap{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+    table{width:100%;border-collapse:collapse}
+    thead{background:#16a34a;color:#fff}
+    th{padding:0.75rem 1rem;text-align:left;font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px}
+    td{padding:0.75rem 1rem;border-bottom:1px solid #f3f4f6;font-size:0.88rem}
+    tr:hover td{background:#f0fdf4}
+    tr.order-row{cursor:pointer}
+    .status-badge{display:inline-block;padding:0.2rem 0.6rem;border-radius:20px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.3px}
+    .status-confirmed{background:#dcfce7;color:#166534}
+    .status-packed{background:#fef9c3;color:#854d0e}
+    .status-out-for-delivery{background:#dbeafe;color:#1e40af}
+    .status-delivered{background:#d1fae5;color:#065f46}
+
+    .detail-panel{position:fixed;top:0;right:0;width:420px;max-width:90vw;height:100vh;background:#fff;box-shadow:-4px 0 24px rgba(0,0,0,0.15);z-index:1000;transform:translateX(100%);transition:transform 0.3s ease;padding:1.5rem;overflow-y:auto}
+    .detail-panel.open{transform:translateX(0)}
+    .detail-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:999;display:none}
+    .detail-overlay.open{display:block}
+    .detail-panel .close-btn{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#6b7280}
+    .detail-panel h2{font-size:1.2rem;margin-bottom:0.5rem;color:#16a34a}
+    .detail-section{margin-bottom:1.25rem}
+    .detail-section h3{font-size:0.8rem;text-transform:uppercase;letter-spacing:0.5px;color:#6b7280;margin-bottom:0.5rem}
+    .detail-section p{font-size:0.9rem;line-height:1.5}
+    .detail-items{list-style:none;padding:0}
+    .detail-items li{display:flex;justify-content:space-between;padding:0.4rem 0;border-bottom:1px solid #f3f4f6;font-size:0.88rem}
+    .detail-totals{margin-top:0.75rem;padding-top:0.75rem;border-top:2px solid #e5e7eb}
+    .detail-totals div{display:flex;justify-content:space-between;margin-bottom:0.3rem;font-size:0.88rem}
+    .detail-totals .total-final{font-weight:700;font-size:1.05rem;color:#16a34a;border-top:2px solid #16a34a;padding-top:0.5rem;margin-top:0.5rem}
+
+    .empty-state{text-align:center;padding:3rem;color:#6b7280}
+    .empty-state h2{margin-bottom:0.5rem}
+    .refresh-btn{background:#16a34a;color:#fff;border:none;padding:0.5rem 1rem;border-radius:8px;cursor:pointer;font-size:0.85rem;font-weight:600}
+    .refresh-btn:hover{background:#15803d}
+    @media(max-width:768px){
+      th,td{padding:0.5rem 0.6rem;font-size:0.8rem}
+      .detail-panel{width:100%;max-width:100%}
+    }
+  </style>
+</head>
+<body>
+  <!-- LOGIN VIEW -->
+  <div class="admin-login" id="loginView">
+    <div class="login-card">
+      <h1>Barkat Pharmacy</h1>
+      <p>Admin Panel — Enter your access code</p>
+      <div class="login-error" id="loginError">Incorrect code. Please try again.</div>
+      <input type="password" id="adminCode" placeholder="Access code" autocomplete="off">
+      <button id="loginBtn">View Orders</button>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL VIEW -->
+  <div class="admin-panel" id="adminView" style="display:none">
+    <div class="admin-header">
+      <h1>Orders</h1>
+      <div class="stats">
+        <div class="stat-box"><strong id="statTotal">0</strong>Total</div>
+        <div class="stat-box"><strong id="statToday">0</strong>Today</div>
+        <div class="stat-box"><strong id="statRevenue">Rs. 0</strong>Revenue</div>
+      </div>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <button class="refresh-btn" id="refreshBtn">Refresh</button>
+        <a href="/" class="back-link">Back to site</a>
+      </div>
+    </div>
+
+    <div class="orders-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Order #</th>
+            <th>Date</th>
+            <th>Customer</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+      <div class="empty-state" id="emptyState" style="display:none">
+        <h2>No orders yet</h2>
+        <p>Orders placed on your website will appear here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ORDER DETAIL SLIDE-OUT -->
+  <div class="detail-overlay" id="detailOverlay"></div>
+  <div class="detail-panel" id="detailPanel">
+    <button class="close-btn" id="detailClose">&times;</button>
+    <h2 id="detailOrderNumber"></h2>
+    <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem" id="detailDate"></p>
+
+    <div class="detail-section">
+      <h3>Customer</h3>
+      <p id="detailCustomer"></p>
+      <p id="detailPhone" style="color:#6b7280;font-size:0.85rem"></p>
+      <p id="detailAddress" style="color:#6b7280;font-size:0.85rem"></p>
+      <p id="detailNotes" style="color:#6b7280;font-size:0.85rem;font-style:italic"></p>
+    </div>
+
+    <div class="detail-section">
+      <h3>Items</h3>
+      <ul class="detail-items" id="detailItems"></ul>
+    </div>
+
+    <div class="detail-section detail-totals">
+      <div><span>Subtotal</span><span id="detailSubtotal"></span></div>
+      <div id="detailDiscountRow"><span>Discount</span><span id="detailDiscount"></span></div>
+      <div><span>Delivery</span><span id="detailDelivery"></span></div>
+      <div class="total-final"><span>Total</span><span id="detailTotal"></span></div>
+    </div>
+
+    <div class="detail-section">
+      <h3>Payment</h3>
+      <p id="detailPayment"></p>
+    </div>
+  </div>
+
+<script>
+(function() {
+  const API = '/api/orders';
+  const STORAGE_KEY = 'barkat_admin_code';
+
+  const loginView = document.getElementById('loginView');
+  const adminView = document.getElementById('adminView');
+  const loginError = document.getElementById('loginError');
+  const codeInput = document.getElementById('adminCode');
+  const loginBtn = document.getElementById('loginBtn');
+  const ordersBody = document.getElementById('ordersBody');
+  const emptyState = document.getElementById('emptyState');
+  const refreshBtn = document.getElementById('refreshBtn');
+
+  const detailPanel = document.getElementById('detailPanel');
+  const detailOverlay = document.getElementById('detailOverlay');
+  const detailClose = document.getElementById('detailClose');
+
+  let adminCode = sessionStorage.getItem(STORAGE_KEY) || '';
+  let allOrders = [];
+
+  if (adminCode) showAdmin();
+
+  loginBtn.addEventListener('click', tryLogin);
+  codeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') tryLogin(); });
+  refreshBtn.addEventListener('click', loadOrders);
+  detailClose.addEventListener('click', closeDetail);
+  detailOverlay.addEventListener('click', closeDetail);
+
+  async function tryLogin() {
+    adminCode = codeInput.value.trim();
+    if (!adminCode) return;
+    loginBtn.disabled = true;
+    loginBtn.textContent = 'Checking...';
+    loginError.style.display = 'none';
+    try {
+      const res = await fetch(API, { headers: { 'X-Admin-Code': adminCode } });
+      if (res.ok) {
+        sessionStorage.setItem(STORAGE_KEY, adminCode);
+        showAdmin();
+      } else {
+        loginError.style.display = 'block';
+      }
+    } catch {
+      loginError.textContent = 'Could not reach server.';
+      loginError.style.display = 'block';
+    }
+    loginBtn.disabled = false;
+    loginBtn.textContent = 'View Orders';
+  }
+
+  async function showAdmin() {
+    loginView.style.display = 'none';
+    adminView.style.display = '';
+    await loadOrders();
+  }
+
+  async function loadOrders() {
+    refreshBtn.textContent = 'Loading...';
+    try {
+      const res = await fetch(API, { headers: { 'X-Admin-Code': adminCode } });
+      if (!res.ok) {
+        sessionStorage.removeItem(STORAGE_KEY);
+        adminView.style.display = 'none';
+        loginView.style.display = 'flex';
+        loginError.textContent = 'Session expired. Enter your code again.';
+        loginError.style.display = 'block';
+        return;
+      }
+      const json = await res.json();
+      allOrders = json.data || [];
+      allOrders.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+      renderTable();
+      renderStats();
+    } catch (err) {
+      console.error('Failed to load orders:', err);
+    }
+    refreshBtn.textContent = 'Refresh';
+  }
+
+  function renderStats() {
+    const today = new Date().toISOString().slice(0, 10);
+    const todayOrders = allOrders.filter(o => (o.createdAt || '').startsWith(today));
+    const revenue = allOrders.reduce((s, o) => s + (o.total || 0), 0);
+    document.getElementById('statTotal').textContent = allOrders.length;
+    document.getElementById('statToday').textContent = todayOrders.length;
+    document.getElementById('statRevenue').textContent = 'Rs. ' + revenue.toLocaleString('en-PK');
+  }
+
+  function renderTable() {
+    if (allOrders.length === 0) {
+      ordersBody.innerHTML = '';
+      emptyState.style.display = '';
+      return;
+    }
+    emptyState.style.display = 'none';
+    ordersBody.innerHTML = allOrders.map((o, i) => {
+      const d = o.createdAt ? new Date(o.createdAt) : new Date();
+      const dateStr = d.toLocaleDateString('en-PK', { day: 'numeric', month: 'short', year: 'numeric' });
+      const timeStr = d.toLocaleTimeString('en-PK', { hour: '2-digit', minute: '2-digit' });
+      const itemCount = (o.items || []).reduce((s, it) => s + (it.qty || 1), 0);
+      return '<tr class="order-row" data-idx="' + i + '">' +
+        '<td><strong>' + (o.orderNumber || '-') + '</strong></td>' +
+        '<td>' + dateStr + '<br><small style="color:#9ca3af">' + timeStr + '</small></td>' +
+        '<td>' + escapeHtml((o.customer || {}).name || '-') + '</td>' +
+        '<td>' + itemCount + ' item' + (itemCount !== 1 ? 's' : '') + '</td>' +
+        '<td><strong>Rs. ' + (o.total || 0).toLocaleString('en-PK') + '</strong></td>' +
+        '<td><span class="status-badge status-' + (o.status || 'confirmed') + '">' + (o.status || 'confirmed') + '</span></td>' +
+        '</tr>';
+    }).join('');
+
+    ordersBody.querySelectorAll('.order-row').forEach(row => {
+      row.addEventListener('click', () => {
+        const order = allOrders[parseInt(row.dataset.idx)];
+        if (order) openDetail(order);
+      });
+    });
+  }
+
+  function openDetail(o) {
+    document.getElementById('detailOrderNumber').textContent = o.orderNumber || '';
+    const d = o.createdAt ? new Date(o.createdAt) : new Date();
+    document.getElementById('detailDate').textContent = d.toLocaleString('en-PK', {
+      weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    });
+    document.getElementById('detailCustomer').textContent = (o.customer || {}).name || '';
+    document.getElementById('detailPhone').textContent = (o.customer || {}).phone || '';
+    document.getElementById('detailAddress').textContent = (o.customer || {}).address || '';
+    document.getElementById('detailNotes').textContent = (o.customer || {}).notes || '';
+
+    const itemsHtml = (o.items || []).map(it =>
+      '<li><span>' + escapeHtml(it.name) + ' &times; ' + (it.qty || 1) + '</span><span>Rs. ' + (it.lineTotal || it.price * it.qty || 0).toLocaleString('en-PK') + '</span></li>'
+    ).join('');
+    document.getElementById('detailItems').innerHTML = itemsHtml;
+
+    document.getElementById('detailSubtotal').textContent = 'Rs. ' + (o.subtotal || 0).toLocaleString('en-PK');
+    const discountRow = document.getElementById('detailDiscountRow');
+    if (o.discount > 0) {
+      discountRow.style.display = 'flex';
+      document.getElementById('detailDiscount').textContent = '- Rs. ' + o.discount.toLocaleString('en-PK');
+    } else {
+      discountRow.style.display = 'none';
+    }
+    document.getElementById('detailDelivery').textContent = o.delivery === 0 ? 'Free' : 'Rs. ' + (o.delivery || 0).toLocaleString('en-PK');
+    document.getElementById('detailTotal').textContent = 'Rs. ' + (o.total || 0).toLocaleString('en-PK');
+    document.getElementById('detailPayment').textContent = (o.paymentMethod || 'cod').toUpperCase() + (o.promoCode ? ' (Promo: ' + o.promoCode + ')' : '');
+
+    detailPanel.classList.add('open');
+    detailOverlay.classList.add('open');
+  }
+
+  function closeDetail() {
+    detailPanel.classList.remove('open');
+    detailOverlay.classList.remove('open');
+  }
+
+  function escapeHtml(s) {
+    const d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
+})();
+</script>
+</body>
+</html>

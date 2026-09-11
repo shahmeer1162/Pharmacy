@@ -1,0 +1,865 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barkat Pharmacy — Your Trusted Online Pharmacy</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-pill">
+        <div class="pill-half pill-left"></div>
+        <div class="pill-half pill-right"></div>
+      </div>
+      <p class="preloader-text">Barkat</p>
+    </div>
+  </div>
+
+  <!-- Floating Particles Background -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Navigation -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="12" fill="url(#logoGrad)"/>
+            <path d="M20 8v24M8 20h24" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+            <circle cx="20" cy="20" r="14" stroke="white" stroke-width="2" opacity="0.3"/>
+            <defs>
+              <linearGradient id="logoGrad" x1="0" y1="0" x2="40" y2="40">
+                <stop stop-color="#059669"/>
+                <stop offset="1" stop-color="#10b981"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <span class="logo-text">Barkat <span class="text-green">Pharmacy</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#categories" class="nav-link">Categories</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#testimonials" class="nav-link">Reviews</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-icon search-toggle" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+        <button class="btn-icon cart-btn" aria-label="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="cart-badge">3</span>
+        </button>
+        <a href="#" class="btn btn-primary btn-sm nav-cta">Get Started</a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="container">
+        <div class="search-bar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" placeholder="Search for medicines, health products..." class="search-input" id="searchInput">
+          <button class="search-close" id="searchClose">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+        <div class="search-suggestions" id="searchSuggestions">
+          <span class="suggestions-label">Popular:</span>
+          <button class="suggestion-chip" data-chip="Panadol">Panadol</button>
+          <button class="suggestion-chip" data-chip="Vitamin">Vitamin</button>
+          <button class="suggestion-chip" data-chip="Cough">Cough Syrup</button>
+          <button class="suggestion-chip" data-chip="Thermometer">Thermometer</button>
+          <button class="suggestion-chip" data-chip="Amoxil">Amoxil</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <div class="mobile-nav-header">
+      <span class="logo-text">Barkat <span class="text-green">Pharmacy</span></span>
+      <button class="mobile-nav-close" id="mobileNavClose">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-nav-links">
+      <a href="#home">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#testimonials">Reviews</a>
+    </nav>
+    <a href="#" class="btn btn-primary btn-full">Get Started</a>
+  </div>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+      <div class="container hero-container">
+        <div class="hero-content" data-animate="fade-right">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            Trusted by 50,000+ Customers Across Lahore
+          </div>
+          <h1 class="hero-title">
+            Your Health,<br>
+            <span class="gradient-text">Delivered with Care</span>
+          </h1>
+          <p class="hero-description">
+            Order authentic medicines, healthcare products & wellness essentials from the comfort of your home in Lahore. Licensed pharmacists, verified prescriptions, and same-day doorstep delivery across Lakecity Meadows.
+          </p>
+          <div class="hero-actions">
+            <a href="#products" class="btn btn-primary btn-lg">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+              Order Now
+            </a>
+            <a href="#how-it-works" class="btn btn-outline btn-lg">
+              How It Works
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-count="50000">0</span>+
+              <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="10000">0</span>+
+              <span class="stat-label">Products</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="24">0</span>/7
+              <span class="stat-label">Support</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" data-animate="fade-left">
+          <div class="hero-card hero-card-main">
+            <div class="card-glow"></div>
+            <div class="hero-medicine-illustration">
+              <div class="medicine-bottle">
+                <div class="bottle-cap"></div>
+                <div class="bottle-body">
+                  <div class="bottle-label">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                      <path d="M24 4v40M4 24h40" stroke="white" stroke-width="4" stroke-linecap="round"/>
+                      <circle cx="24" cy="24" r="18" stroke="white" stroke-width="2.5" opacity="0.4"/>
+                    </svg>
+                    <span>Barkat</span>
+                  </div>
+                </div>
+              </div>
+              <div class="floating-pills">
+                <div class="pill pill-1"></div>
+                <div class="pill pill-2"></div>
+                <div class="pill pill-3"></div>
+                <div class="pill pill-4"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-card floating-card card-delivery" data-animate="float">
+            <div class="floating-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <strong>Free Delivery</strong>
+              <small>              On orders above Rs. 5,000</small>
+            </div>
+          </div>
+
+          <div class="hero-card floating-card card-verified" data-animate="float-delay">
+            <div class="floating-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+              <strong>100% Verified</strong>
+              <small>Genuine medicines</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-wave">
+        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 120L60 108C120 96 240 72 360 66C480 60 600 72 720 78C840 84 960 84 1080 78C1200 72 1320 60 1380 54L1440 48V120H0Z" fill="white"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Browse by Category</span>
+          <h2 class="section-title">What are you <span class="text-green">looking for?</span></h2>
+          <p class="section-subtitle">Explore our wide range of healthcare categories curated just for you</p>
+        </div>
+        <div class="categories-grid">
+          <div class="category-card" data-animate="fade-up" data-delay="0">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </div>
+            <h3>Prescription Drugs</h3>
+            <p>Upload your prescription and get genuine medicines delivered to your doorstep</p>
+            <div class="category-count">2,400+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="category-card" data-animate="fade-up" data-delay="1">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M7 21h10"/><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M12 17v4"/>
+                <path d="M8 10h.01M12 10h.01M16 10h.01"/>
+              </svg>
+            </div>
+            <h3>Wellness & Fitness</h3>
+            <p>Vitamins, supplements and wellness essentials for a healthier lifestyle</p>
+            <div class="category-count">1,800+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="category-card" data-animate="fade-up" data-delay="2">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+              </svg>
+            </div>
+            <h3>Personal Care</h3>
+            <p>Skincare, haircare and personal hygiene products from top brands</p>
+            <div class="category-count">3,200+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="category-card" data-animate="fade-up" data-delay="3">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+              </svg>
+            </div>
+            <h3>Health Devices</h3>
+            <p>BP monitors, glucose meters and diagnostic equipment</p>
+            <div class="category-count">850+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="category-card" data-animate="fade-up" data-delay="4">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Immunity Boosters</h3>
+            <p>Strengthen your immune system with our curated health picks</p>
+            <div class="category-count">620+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+          <div class="category-card" data-animate="fade-up" data-delay="5">
+            <div class="category-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
+              </svg>
+            </div>
+            <h3>Baby Care</h3>
+            <p>Safe and gentle products for your little ones</p>
+            <div class="category-count">940+ Products</div>
+            <a href="#" class="category-link">
+              Browse
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Featured Products</span>
+          <h2 class="section-title">Popular <span class="text-green">medicines</span> & essentials</h2>
+          <p class="section-subtitle">Handpicked bestsellers trusted by thousands of customers</p>
+        </div>
+
+        <div class="product-filters" data-animate="fade-up">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="wellness">Wellness</button>
+          <button class="filter-btn" data-filter="personal">Personal Care</button>
+          <button class="filter-btn" data-filter="devices">Devices</button>
+          <button class="filter-btn" data-filter="immunity">Immunity</button>
+        </div>
+
+        <div class="products-grid" id="productGrid"></div>
+          <a href="#" class="btn btn-outline btn-lg">
+            View All Products
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Simple Process</span>
+          <h2 class="section-title">How <span class="text-green">Barkat</span> works</h2>
+          <p class="section-subtitle">Get your medicines delivered in just 3 easy steps</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card" data-animate="fade-up" data-delay="0">
+            <div class="step-number">01</div>
+            <div class="step-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                <path d="M11 8v6M8 11h6"/>
+              </svg>
+            </div>
+            <h3>Search & Select</h3>
+            <p>Browse thousands of medicines and health products. Use filters to find exactly what you need.</p>
+            <div class="step-connector">
+              <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12h55M48 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="step-card" data-animate="fade-up" data-delay="1">
+            <div class="step-number">02</div>
+            <div class="step-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+              </svg>
+            </div>
+            <h3>Upload Prescription</h3>
+            <p>Have a prescription? Simply upload a photo. Our licensed pharmacists will verify it for you.</p>
+            <div class="step-connector">
+              <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12h55M48 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <div class="step-card" data-animate="fade-up" data-delay="2">
+            <div class="step-number">03</div>
+            <div class="step-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <h3>Fast Delivery</h3>
+            <p>Sit back and relax. Your medicines will be delivered to your doorstep in Lakecity Meadows, Lahore on the same day.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promo Banner -->
+    <section class="promo-section">
+      <div class="container">
+        <div class="promo-banner" data-animate="fade-up">
+          <div class="promo-content">
+            <span class="promo-tag">Limited Time Offer</span>
+            <h2 class="promo-title">Get <span class="text-green">20% OFF</span> on your first order</h2>
+            <p class="promo-description">Use code <strong>BARKAT20</strong> at checkout. Don't miss out on this exclusive offer for new customers!</p>
+            <div class="promo-timer" id="promoTimer">
+              <div class="timer-item">
+                <span class="timer-value" id="timerDays">02</span>
+                <span class="timer-label">Days</span>
+              </div>
+              <span class="timer-sep">:</span>
+              <div class="timer-item">
+                <span class="timer-value" id="timerHours">14</span>
+                <span class="timer-label">Hours</span>
+              </div>
+              <span class="timer-sep">:</span>
+              <div class="timer-item">
+                <span class="timer-value" id="timerMins">36</span>
+                <span class="timer-label">Mins</span>
+              </div>
+              <span class="timer-sep">:</span>
+              <div class="timer-item">
+                <span class="timer-value" id="timerSecs">48</span>
+                <span class="timer-label">Secs</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-primary btn-lg">Claim Offer Now</a>
+          </div>
+          <div class="promo-visual">
+            <div class="promo-circle"></div>
+            <div class="promo-percent">20<small>%</small></div>
+            <div class="promo-sub">OFF</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-header" data-animate="fade-up">
+          <span class="section-tag">Customer Reviews</span>
+          <h2 class="section-title">Loved by <span class="text-green">50,000+</span> customers</h2>
+          <p class="section-subtitle">See what our customers have to say about their experience</p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card" data-animate="fade-up" data-delay="0">
+            <div class="testimonial-stars">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">"Absolutely love the service! Ordered my monthly prescriptions and they arrived in under an hour. The packaging was secure and everything was genuine. Highly recommended!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SK</div>
+              <div>
+                <strong>Sarah Khan</strong>
+                <small>Verified Customer</small>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card featured" data-animate="fade-up" data-delay="1">
+            <div class="testimonial-stars">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">"As someone with a chronic condition, having a reliable online pharmacy is a lifesaver. Barkat's prescription upload feature is incredibly convenient. The pharmacists are also very helpful and responsive."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AR</div>
+              <div>
+                <strong>Ahmed Raza</strong>
+                <small>Verified Customer</small>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card" data-animate="fade-up" data-delay="2">
+            <div class="testimonial-stars">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" opacity="0.3"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <p class="testimonial-text">"The best online pharmacy experience I've had. Clean UI, genuine products, and excellent customer support. The delivery guy was also very professional. Will definitely order again!"</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">FP</div>
+              <div>
+                <strong>Fatima Patel</strong>
+                <small>Verified Customer</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+      <div class="container">
+        <div class="trust-grid">
+          <div class="trust-item" data-animate="fade-up" data-delay="0">
+            <div class="trust-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+            <h4>Licensed & Verified</h4>
+            <p>Fully licensed pharmacy with verified medicines</p>
+          </div>
+          <div class="trust-item" data-animate="fade-up" data-delay="1">
+            <div class="trust-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+            </div>
+            <h4>Free Delivery</h4>
+            <p>              Free shipping on all orders above Rs. 5,000</p>
+          </div>
+          <div class="trust-item" data-animate="fade-up" data-delay="2">
+            <div class="trust-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
+            <h4>24/7 Support</h4>
+            <p>Round the clock customer support</p>
+          </div>
+          <div class="trust-item" data-animate="fade-up" data-delay="3">
+            <div class="trust-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <path d="M12 1a3 3 0 0 0-3 3v4a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/>
+                <path d="m15 7-3 3-3-3"/>
+              </svg>
+            </div>
+            <h4>Expert Pharmacists</h4>
+            <p>Certified pharmacists available for consultation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-card" data-animate="fade-up">
+          <div class="newsletter-content">
+            <h2 class="newsletter-title">Stay <span class="text-green">healthy</span>, stay informed</h2>
+            <p class="newsletter-description">Subscribe to our newsletter for exclusive deals, health tips, and new product alerts.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+              <div class="newsletter-input-wrapper">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+              </div>
+              <button type="submit" class="btn btn-primary btn-lg newsletter-btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 40L60 44C120 48 240 56 360 58C480 60 600 56 720 50C840 44 960 36 1080 34C1200 32 1320 36 1380 38L1440 40V100H0Z" fill="white" fill-opacity="0.05"/>
+      </svg>
+    </div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="12" fill="url(#logoGrad2)"/>
+                <path d="M20 8v24M8 20h24" stroke="white" stroke-width="3.5" stroke-linecap="round"/>
+                <circle cx="20" cy="20" r="14" stroke="white" stroke-width="2" opacity="0.3"/>
+                <defs>
+                  <linearGradient id="logoGrad2" x1="0" y1="0" x2="40" y2="40">
+                    <stop stop-color="#059669"/>
+                    <stop offset="1" stop-color="#10b981"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span class="logo-text">Barkat <span class="text-green">Pharmacy</span></span>
+          </a>
+          <p class="footer-tagline">Your trusted online pharmacy in Lahore, delivering genuine medicines and healthcare products right to your doorstep in Lakecity Meadows and beyond.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Upload Prescription</a></li>
+            <li><a href="#">Order Medicines</a></li>
+            <li><a href="#">Health Products</a></li>
+            <li><a href="#">Pharmacist Chat</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Refund Policy</a></li>
+            <li><a href="#">Shipping Info</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Contact</h4>
+          <ul>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Lakecity Meadows, Lahore, Pakistan
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +92 300 1234567
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              support@barkatpharmacy.com
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Barkat Pharmacy. All rights reserved. <a href="/admin.html" style="color:#9ca3af;font-size:0.75rem;text-decoration:none;margin-left:0.5rem" title="Admin">Admin</a></p>
+        <div class="payment-methods">
+          <span>Payment:</span>
+            <div class="payment-icons">
+              <div class="payment-icon">COD</div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3 class="cart-title">Your Cart</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <p>Your cart is empty</p>
+        <span>Add some medicines to get started</span>
+        <button class="btn btn-primary btn-sm" id="cartContinue">Continue Shopping</button>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-promo">
+        <input type="text" class="cart-promo-input" id="cartPromoInput" placeholder="Promo code e.g. BARKAT20" maxlength="20">
+        <button class="cart-promo-btn" id="cartPromoBtn">Apply</button>
+      </div>
+      <div class="cart-promo-msg" id="cartPromoMsg"></div>
+      <div class="cart-subtotal-row">
+        <span>Subtotal</span>
+        <strong class="cart-subtotal" id="cartSubtotal">Rs. 0</strong>
+      </div>
+      <div class="cart-delivery-row">
+        <span>Delivery</span>
+        <strong id="cartDelivery">Free</strong>
+      </div>
+      <div class="cart-discount-row" id="cartDiscountRow" style="display:none;">
+        <span>Discount (20%)</span>
+        <strong class="cart-discount" id="cartDiscount">-Rs. 0</strong>
+      </div>
+      <div class="cart-total-row">
+        <span>Total</span>
+        <strong class="cart-total" id="cartTotal">Rs. 0</strong>
+      </div>
+      <button class="btn btn-primary btn-lg btn-full" id="cartCheckout">Proceed to Checkout</button>
+      <p class="cart-note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Cash on Delivery, JazzCash & EasyPaisa available
+      </p>
+    </div>
+  </aside>
+
+  <!-- Checkout Modal -->
+  <div class="checkout-overlay" id="checkoutOverlay"></div>
+  <div class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <button class="checkout-close" id="checkoutClose" aria-label="Close checkout">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- Checkout Form View -->
+    <div class="checkout-view" id="checkoutFormView">
+      <div class="checkout-header">
+        <span class="checkout-steps">
+          <span class="checkout-step active">1. Delivery Details</span>
+          <span class="checkout-step-sep"></span>
+          <span class="checkout-step active">2. Payment</span>
+        </span>
+        <h3 class="checkout-title">Complete Your Order</h3>
+        <p class="checkout-subtitle">Delivery to Lakecity Meadows, Lahore within 2-4 hours</p>
+      </div>
+
+      <div class="checkout-body">
+        <div class="checkout-layout">
+          <form class="checkout-form" id="checkoutForm" novalidate>
+            <div class="form-group">
+              <label for="coName">Full Name</label>
+              <input type="text" id="coName" placeholder="e.g. Muhammad Ahmed" autocomplete="name">
+              <small class="form-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="coPhone">Mobile Number</label>
+              <input type="tel" id="coPhone" placeholder="03XX-XXXXXXX" maxlength="15" autocomplete="tel">
+              <small class="form-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="coCity">City</label>
+              <select id="coCity">
+                <option value="Lahore" selected>Lahore</option>
+                <option value="Islamabad">Islamabad</option>
+                <option value="Rawalpindi">Rawalpindi</option>
+                <option value="Karachi">Karachi</option>
+                <option value="Faisalabad">Faisalabad</option>
+                <option value="Multan">Multan</option>
+              </select>
+              <small class="form-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="coAddress">Delivery Address</label>
+              <textarea id="coAddress" rows="3" placeholder="House #, Street, Block, Area — e.g. House 15, Lakecity Meadows, Lahore"></textarea>
+              <small class="form-error"></small>
+            </div>
+            <div class="form-group">
+              <label for="coNotes">Order Notes (Optional)</label>
+              <textarea id="coNotes" rows="2" placeholder="Any special instructions for the pharmacist or rider"></textarea>
+            </div>
+
+            <div class="payment-methods">
+              <div class="payment-method">
+                <input type="radio" name="payment" id="payCod" value="cod" checked>
+                <label for="payCod">
+                  <span class="pay-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                  </span>
+                  <strong>Cash on Delivery</strong>
+                  <small>Pay when you receive your order</small>
+                </label>
+              </div>
+            </div>
+            </div>
+          </form>
+
+          <aside class="checkout-summary">
+            <h4>Order Summary</h4>
+            <div class="checkout-summary-items" id="checkoutSummaryItems"></div>
+            <div class="checkout-summary-totals">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <strong id="csubtotal">Rs. 0</strong>
+              </div>
+              <div class="summary-row" id="cdiscountRow" style="display:none;">
+                <span>Discount (20%)</span>
+                <strong id="cdiscount">-Rs. 0</strong>
+              </div>
+              <div class="summary-row">
+                <span>Delivery</span>
+                <strong id="cdelivery">Free</strong>
+              </div>
+              <div class="summary-row summary-total">
+                <span>Total</span>
+                <strong id="ctotal">Rs. 0</strong>
+              </div>
+            </div>
+            <button class="btn btn-primary btn-lg btn-full" id="placeOrderBtn" type="button">
+              <span class="place-order-label">Place Order</span>
+              <span class="place-order-loader" style="display:none;">
+                <span class="spinner"></span> Processing...
+              </span>
+            </button>
+            <p class="checkout-secure">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Your information is kept secure and confidential
+            </p>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Success View -->
+    <div class="checkout-view checkout-success" id="checkoutSuccessView" hidden>
+      <div class="success-animation">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#d1fae5" stroke-width="4"/>
+          <path d="M40 6a34 34 0 1 1-24 8" stroke="#10b981" stroke-width="4" stroke-linecap="round" stroke-dasharray="220" stroke-dashoffset="0">
+            <animate attributeName="stroke-dashoffset" from="220" to="0" dur="1s" fill="freeze"/>
+          </path>
+          <path d="M26 40l10 10 18-18" stroke="#059669" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0" stroke-dasharray="40" stroke-dashoffset="40">
+            <animate attributeName="stroke-dashoffset" from="40" to="0" dur="0.5s" begin="0.8s" fill="freeze"/>
+            <animate attributeName="opacity" from="0" to="1" dur="0.1s" begin="0.8s" fill="freeze"/>
+          </path>
+        </svg>
+      </div>
+      <h3 class="success-title">Order Placed Successfully!</h3>
+      <p class="success-message">Thank you for shopping with Barkat Pharmacy. Your order has been confirmed.</p>
+      <div class="success-details">
+        <div class="success-detail">
+          <span>Order Number</span>
+          <strong id="successOrderNumber">BP-2026-00001</strong>
+        </div>
+        <div class="success-detail">
+          <span>Total Amount</span>
+          <strong id="successTotal">Rs. 0</strong>
+        </div>
+        <div class="success-detail">
+          <span>Payment Method</span>
+          <strong id="successPayment">Cash on Delivery</strong>
+        </div>
+        <div class="success-detail">
+          <span>Delivery To</span>
+          <strong id="successAddress">—</strong>
+        </div>
+        <div class="success-detail">
+          <span>Estimated Delivery</span>
+          <strong id="successDelivery">Today (2-4 hours)</strong>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-lg" id="successDoneBtn">Done</a>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
